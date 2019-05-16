@@ -11,24 +11,21 @@ const SendResultsController = require('./controllers/sendResults.controller');
 const listsService = require('./services/lists.service');
 const messagesService = require('./services/messages.service');
 const config = require('./config/config');
+const mysqlConfig = require('./config/.mysql');
 
 logger.info("Starting Respler app...");
 
 var db;
 
 async function initDb() {
-    db = await mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '', // TODO: esto va a config o env
-        database: 'fleetmailer'
-    }).then(result => {
-        logger.info("Conectado con MySQL");
-        return result;
-    }).catch(error => {
-        logger.error("Error al conectar con mysql");
-        logger.error(error);
-    });
+    db = await mysql.createConnection(mysqlConfig)
+        .then(result => {
+            logger.info("Conectado con MySQL");
+            return result;
+        }).catch(error => {
+            logger.error("Error al conectar con mysql");
+            logger.error(error);
+        });
 
     global.db = db; // TODO: eliminar
 
