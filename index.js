@@ -20,7 +20,7 @@ async function initDb() {
     db = await mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: 'FleetT%y6U/!1', // TODO: esto va a config o env
+        password: '', // TODO: esto va a config o env
         database: 'fleetmailer'
     }).then(result => {
         logger.info("Conectado con MySQL");
