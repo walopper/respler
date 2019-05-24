@@ -22,7 +22,7 @@ class Lists {
     /** escribe log */
     async subscriberActionLog(email, lid, mid, action, data = '', from_source = '', convertion = '') {
 
-        let [res,] = await this.db.query(`SELECT creator FROM om_xlistas WHERE id = ?`, [lid]).catch(error => {
+        let [res,] = await this.db.query(`SELECT creator FROM om_listas WHERE id = ?`, [lid]).catch(error => {
             logger.error(error)
             throw 'No se pudo ejecutar la query';
         });

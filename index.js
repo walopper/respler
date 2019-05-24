@@ -16,6 +16,7 @@ const mysqlConfig = require('./config/.mysql');
 logger.info("Starting Respler app...");
 
 var db;
+global.config = config;
 
 async function initDb() {
     db = await mysql.createConnection(mysqlConfig)
